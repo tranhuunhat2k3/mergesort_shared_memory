@@ -3,6 +3,7 @@ Using shared memory and parallel programming in merge sort algorithm to compare 
 
 This program is written in C++ and work on Linux system.
 Download this code and compile using (g++ -o [program_name] [C++_file_name]), make sure that you installed build essentials. (On Unbutu : sudo apt install build-essentials)
+
 The important part of the solution to this problem is not algorithmic, but to explain concepts of Operating System and kernel. 
 To achieve concurrent sorting, we need a way to make two processes to work on the same array at the same time. To make things easier Linux provides a lot of system calls via simple API endpoints. Two of them are, shmget() (for shared memory allocation) and shmat() (for shared memory operations). We create a shared memory space between the child process that we fork. Each segment is split into left and right child which is sorted, the interesting part being they are working concurrently! The shmget() requests the kernel to allocate a shared page for both the processes.
 
